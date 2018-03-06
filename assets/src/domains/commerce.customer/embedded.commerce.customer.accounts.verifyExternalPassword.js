@@ -30,7 +30,7 @@
 
 
  */
-const drupal = require('drupal-hash');
+var drupal = require('drupal-hash');
 
 module.exports = function(context, callback) {
   var stored = context.get.externalPassword();
