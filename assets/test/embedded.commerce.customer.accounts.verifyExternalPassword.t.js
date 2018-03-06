@@ -14,7 +14,7 @@ var assert = Simulator.assert;
 
 var actionName = 'embedded.commerce.customer.accounts.verifyExternalPassword';
 
-describe('embedded.commerce.customer.accounts.verifyExternalPassword implementing embedded.commerce.customer.accounts.verifyExternalPassword', function () {
+describe('drupal_pass_validate implementing embedded.commerce.customer.accounts.verifyExternalPassword', function () {
 
   var action;
 
@@ -22,7 +22,7 @@ describe('embedded.commerce.customer.accounts.verifyExternalPassword implementin
     action = require('../src/domains/commerce.customer/embedded.commerce.customer.accounts.verifyExternalPassword');
   });
 
-  it('runs successfully', function(done) {
+  it('validates empty password', function(done) {
 
     var callback = function(err) {
       assert.ok(!err, "Callback was called with an error: " + err);
@@ -33,7 +33,9 @@ describe('embedded.commerce.customer.accounts.verifyExternalPassword implementin
     var context = Simulator.context(actionName, callback);
 
     // modify context as necessary
-
+    context.get.externalPassword = function() { return "$S$DWlV7ZueZ7vNB6H9xhuQ46yWFO.dqTiaJsnWHw7tARzyMD.pXhLq" };
+    context.get.clearTextpassword = function() { return "password" };
+    context.exec.setSuccess = function(succeeded) { assert.equal(succeeded, context.get.externalPassword()) };
 
     Simulator.simulate(actionName, action, context, callback);
   });
