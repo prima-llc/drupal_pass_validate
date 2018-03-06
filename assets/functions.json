@@ -1,0 +1,9 @@
+{
+  "exports": [
+    {
+      "id": "embedded.commerce.customer.accounts.verifyExternalPassword",
+      "virtualPath": "./dist/commerce.customer.manifest.all.js",
+      "actionId": "embedded.commerce.customer.accounts.verifyExternalPassword"
+    }
+  ]
+}
