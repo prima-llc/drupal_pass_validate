@@ -22,7 +22,7 @@ describe('drupal_pass_validate implementing embedded.commerce.customer.accounts.
     action = require('../src/domains/commerce.customer/embedded.commerce.customer.accounts.verifyExternalPassword');
   });
 
-  it('validates empty password', function(done) {
+  it('validates "password" password', function(done) {
 
     var callback = function(err) {
       assert.ok(!err, "Callback was called with an error: " + err);
