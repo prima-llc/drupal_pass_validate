@@ -33,9 +33,9 @@ describe('drupal_pass_validate implementing embedded.commerce.customer.accounts.
     var context = Simulator.context(actionName, callback);
 
     // modify context as necessary
-    context.get.externalPassword = function() { return "$S$DWlV7ZueZ7vNB6H9xhuQ46yWFO.dqTiaJsnWHw7tARzyMD.pXhLq" };
-    context.get.clearTextpassword = function() { return "password" };
-    context.exec.setSuccess = function(succeeded) { assert.equal(succeeded, context.get.externalPassword()) };
+    context.get.externalPassword = function() { return '$S$DEXNLCKGllCnq38t4HqfXE4fMDZdeTXyNK93akBf0RbUW4YpRD6E' };
+    context.get.clearTextPassword = function() { return 'password' };
+    context.exec.setSuccess = function(succeeded) { assert.ok(succeeded) };
 
     Simulator.simulate(actionName, action, context, callback);
   });
