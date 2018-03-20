@@ -1,12 +1,9 @@
 {
   "name": "drupal_pass_validate",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Validates passwords hashed by Drupal 7.",
   "scripts": {
     "test": "grunt test"
-  },
-  "dependencies": {
-    "drupal-hash": "^1.0.4"
   },
   "devDependencies": {
     "grunt": "^1.0.2",
