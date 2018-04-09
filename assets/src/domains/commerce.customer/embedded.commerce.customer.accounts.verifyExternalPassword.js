@@ -30,6 +30,7 @@
 
 
  */
+var Buffer = require('buffer').Buffer;
 var crypto = require('crypto');
 var itoa64 = "./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
