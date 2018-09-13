@@ -1,0 +1,6 @@
+<PackageConfig xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://developer.mozu.com/v1">
+  <PackageName>Release</PackageName>
+  <ConfigUrl />
+  <ApplicationKey>Burke.drupal_pass_validate.1.1.0.Release</ApplicationKey>
+  <Extends />
+</PackageConfig>

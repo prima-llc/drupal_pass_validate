@@ -8,7 +8,6 @@ module.exports = {
 };
 
 },{"./domains/commerce.customer/embedded.commerce.customer.accounts.verifyExternalPassword":2}],2:[function(require,module,exports){
-(function (Buffer){
 /**
  * Implementation for embedded.commerce.customer.accounts.verifyExternalPassword
 
@@ -41,12 +40,17 @@ module.exports = {
 
 
  */
+var Buffer = require('buffer').Buffer;
 var crypto = require('crypto');
 var itoa64 = "./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
 module.exports = function(context, callback) {
   var stored = context.get.externalPassword();
   var password = context.get.clearTextPassword();
+
+  if (typeof password != 'string' || password.length < 6) {
+    return callback("Password is too short.");
+  }
 
   if (stored.substr(0, 2) == 'U$') {
     // This may be an updated password from user_update_7000(). Such hashes have
@@ -125,6 +129,5 @@ function encode64(input) {
   return output;
 }
 
-}).call(this,require("buffer").Buffer)
 },{"buffer":undefined,"crypto":undefined}]},{},[1])(1)
 });

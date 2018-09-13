@@ -1,0 +1,9 @@
+<Core xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://developer.mozu.com/v1">
+  <DevAccountNamespace>Burke</DevAccountNamespace>
+  <Name>DrupalPassValidate</Name>
+  <AppId>drupal_pass_validate</AppId>
+  <Version>1.1.0</Version>
+  <SharedSecret>f0c1b54069094b9c926c4c590ff6228a</SharedSecret>
+  <MozuApiVersion>1.1607.16056.0</MozuApiVersion>
+  <Description>Validates passwords hashed by Drupal 7.</Description>
+</Core>
