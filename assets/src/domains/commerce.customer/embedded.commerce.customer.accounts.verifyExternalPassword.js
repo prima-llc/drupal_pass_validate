@@ -38,6 +38,10 @@ module.exports = function(context, callback) {
   var stored = context.get.externalPassword();
   var password = context.get.clearTextPassword();
 
+  if (typeof password != 'string' || password.length < 6) {
+    return callback("Password is too short.");
+  }
+
   if (stored.substr(0, 2) == 'U$') {
     // This may be an updated password from user_update_7000(). Such hashes have
     // 'U' added as the first character an need an extra MD5.
