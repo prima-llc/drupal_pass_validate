@@ -30,12 +30,14 @@
 
 
  */
-var Buffer = require('buffer').Buffer;
+// var Buffer = require('buffer').Buffer;
 var crypto = require('crypto');
 var itoa64 = "./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
 module.exports = function(context, callback) {
   var stored = context.get.externalPassword();
+  console.log('Stored is "' + stored + '"');
+
   var password = context.get.clearTextPassword();
 
   if (typeof password != 'string' || password.length < 6) {
@@ -70,13 +72,14 @@ module.exports = function(context, callback) {
 
   var count = 1 << log2_count;
 
-  var hash = crypto.createHash('sha512').update(salt + password).digest();
+  var hash = crypto.createHash('sha512').update(salt + password);
   do {
-    hash = crypto.createHash('sha512').update(Buffer.concat([hash, Buffer.from(password)])).digest();
+    hash = crypto.createHash('sha512').update(Buffer.concat([hash.digest(), new Buffer(password, 'utf8')]));
     count = count - 1;
   } while (count > 0);
 
-  var output = setting + encode64(hash);
+  var output = setting + encode64(hash.digest());
+  console.log('Output is "' + output + '"');
 
   context.exec.setSuccess(output.substr(0, 55) === stored);
 

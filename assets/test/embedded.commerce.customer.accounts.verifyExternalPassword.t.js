@@ -39,4 +39,24 @@ describe('drupal_pass_validate implementing embedded.commerce.customer.accounts.
 
     Simulator.simulate(actionName, action, context, callback);
   });
+
+  it('validates "password" with a different salt', function(done) {
+
+    var callback = function(err) {
+      assert.ok(!err, "Callback was called with an error: " + err);
+      // more assertions
+      done();
+    };
+
+    var context = Simulator.context(actionName, callback);
+
+    // modify context as necessary
+    context.get.externalPassword = function() { return '$S$DFhrExoOUvIZqb6jSMdbg9irujs8A6DQU299BwGrjB0MkpktWzhW' };
+    context.get.clearTextPassword = function() { return 'password' };
+    context.exec.setSuccess = function(succeeded) { assert.ok(succeeded) };
+
+    Simulator.simulate(actionName, action, context, callback);
+  });
+
+
 });
